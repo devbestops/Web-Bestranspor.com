@@ -67,13 +67,11 @@ function initScrollSpy(navLinks) {
 
   const observerOptions = {
     root: null,
-    // -96px di atas disesuaikan dengan scroll-padding-top CSS kamu
     rootMargin: "-96px 0px -50% 0px",
     threshold: 0.1,
   };
 
   const observer = new IntersectionObserver((entries) => {
-    // Jika masih di paling atas halaman (Home)
     if (window.scrollY < 100) {
       navLinks.forEach((link) => {
         const href = link.getAttribute("href");
