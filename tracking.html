@@ -1,15 +1,19 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="id">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Shipment Tracking - PT Berkat Subuh Transpor</title>
+    <meta name="description" content="Lacak status pengiriman kargo dan kontainer Anda secara real-time di PT Berkat Subuh Transpor." />
     <link rel="icon" type="image/png" href="assets/images/logo/logo_best.png" />
 
-    <!-- Custom External CSS & Tailwind Config -->
+    <link rel="canonical" href="https://berkatsubuhtranspor.com/tracking.html" />
+    <link rel="alternate" hreflang="id" href="https://berkatsubuhtranspor.com/tracking.html" />
+    <link rel="alternate" hreflang="en" href="https://berkatsubuhtranspor.com/tracking.html?lang=en" />
+    <link rel="alternate" hreflang="x-default" href="https://berkatsubuhtranspor.com/tracking.html" />
+
+    <!-- Custom External CSS -->
     <link rel="stylesheet" href="css/style.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="js/tailwind-config.js"></script>
 
     <!-- Google Fonts & Material Symbols -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
@@ -302,13 +306,12 @@
           errorCard.classList.remove("hidden");
           errorCard.classList.add("flex");
         } finally {
-          // KEMBALIKAN TOMBOL KE SEMULA
           submitBtn.innerHTML = originalBtnText;
           submitBtn.disabled = false;
         }
       }
 
-      // FUNGSI MAPPING STATUS CODE KE STEPPER
+      // MAPPING STATUS CODE KE STEPPER
       function getStepLevel(statusCode) {
         if (["IM01", "EX01", "EX95"].includes(statusCode)) return { step: 4, percent: "100%" };
         if (["IM02", "IM07", "IM30", "IM19", "IM22", "EX04", "EX07", "EX93"].includes(statusCode)) return { step: 3, percent: "75%" };
@@ -326,7 +329,7 @@
         errorCard.classList.remove("flex");
         resultCard.classList.remove("hidden");
 
-        // Ambil status terbaru
+        // Ambil status terbaru (elemen terakhir dari array API)
         const firstData = apiResponse[0];
         const latestData = apiResponse[apiResponse.length - 1];
 
@@ -334,12 +337,11 @@
         document.getElementById("result-status-title").innerText = latestData.StatusName;
         // document.getElementById("meta-awb").innerText = latestData.HAWB;
 
-        // Sederhanakan Informasi Card Rincian
         document.getElementById("meta-awb").innerText = latestData.HAWB;
         document.getElementById("meta-remark").innerText = latestData.Remark || "-";
         document.getElementById("meta-last-update").innerText = latestData.Statusdate;
 
-        // Update WhatsApp CS Link
+        // WhatsApp CS Link
         document.getElementById("btn-wa-cs").href = `https://wa.me/6282171789853?text=Halo%20Admin%2C%20saya%20mau%20tanya%20status%20AWB%20${latestData.HAWB}`;
 
         // Stepper Progress
@@ -347,7 +349,7 @@
         const stepInfo = getStepLevel(statusCode);
         document.getElementById("progress-line-fill").style.width = stepInfo.percent;
 
-        // Update Badge Status
+        // Badge Status
         const badgeContainer = document.getElementById("result-badge-container");
         if (badgeContainer) {
           if (stepInfo.step === 4) {
@@ -357,7 +359,7 @@
           }
         }
 
-        // RENDER TIMELINE VERTIKAL (baru ke lama)
+        // RENDER TIMELINE VERTIKAL
         const container = document.getElementById("timeline-container");
         container.innerHTML = "";
 
@@ -423,6 +425,7 @@
 
       if (awbInput) {
         awbInput.addEventListener("input", function () {
+          // Hanya menyisakan Huruf (a-z, A-Z), Angka (0-9), dan Tanda Hubung (-)
           this.value = this.value.replace(/[^a-zA-Z0-9-]/g, "").toUpperCase();
           toggleClearBtn();
         });
