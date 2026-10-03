@@ -59,7 +59,6 @@
           <a
             href="https://linkedin.com/company/berkat-subuh-transpor"
             target="_blank"
-            rel="noopener noreferrer"
             aria-label="LinkedIn"
             class="w-10 h-10 rounded-full bg-secondary-container text-on-surface flex items-center justify-center hover:brightness-110 transition-all shadow-sm">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -71,7 +70,6 @@
           <a
             href="https://instagram.com/bestransporindonesia"
             target="_blank"
-            rel="noopener noreferrer"
             aria-label="Instagram"
             class="w-10 h-10 rounded-full bg-secondary-container text-on-surface flex items-center justify-center hover:brightness-110 transition-all shadow-sm">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -83,7 +81,6 @@
           <a
             href="https://tiktok.com/@bestransporindonesia"
             target="_blank"
-            rel="noopener noreferrer"
             aria-label="TikTok"
             class="w-10 h-10 rounded-full bg-secondary-container text-on-surface flex items-center justify-center hover:brightness-110 transition-all shadow-sm">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
@@ -95,7 +92,6 @@
           <a
             href="https://youtube.com/@bestranspor"
             target="_blank"
-            rel="noopener noreferrer"
             aria-label="YouTube"
             class="w-10 h-10 rounded-full bg-secondary-container text-on-surface flex items-center justify-center hover:brightness-110 transition-all shadow-sm">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
